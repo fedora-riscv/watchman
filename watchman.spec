@@ -8,7 +8,7 @@
 
 Name:           watchman
 Version:        2020.09.21.00
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        File alteration monitoring service
 
 License:        ASL 2.0
@@ -79,6 +79,9 @@ sed -ie "s|version=\"1.4.1\"|version=\"%{version}\"|" python/setup.py
 
 
 %changelog
+* Mon Nov 23 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-5
+- Rebuild for folly-2020.11.23.00
+
 * Mon Nov 16 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-4
 - Rebuild for folly-2020.11.16.00
 
