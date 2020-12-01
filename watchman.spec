@@ -8,12 +8,13 @@
 
 Name:           watchman
 Version:        2020.09.21.00
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        File alteration monitoring service
 
 License:        ASL 2.0
 URL:            https://facebook.github.io/%{name}/
 Source0:        https://github.com/facebook/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        tmpfiles-%{name}.conf
 Patch0:         %{name}-destdir.patch
 
 # Folly is known not to work on big-endian CPUs
@@ -24,6 +25,8 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  folly-devel
 BuildRequires:  pcre-devel
+# for %%{_tmpfilesdir}
+BuildRequires:  systemd-rpm-macros
 
 %description
 Watchman exists to watch files and record when they actually change. It can also
@@ -57,6 +60,8 @@ sed -ie "s|version=\"1.4.1\"|version=\"%{version}\"|" python/setup.py
 
 %install
 %cmake_install
+mkdir -p %{buildroot}%{_tmpfilesdir}
+cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %if %{with tests}
@@ -68,8 +73,9 @@ sed -ie "s|version=\"1.4.1\"|version=\"%{version}\"|" python/setup.py
 %files
 %license LICENSE
 %doc CODE_OF_CONDUCT.md README.markdown
-%dir %{_var}/run/%{name}
+%attr(02777,root,root) %dir %{_var}/run/%{name}
 %{_bindir}/%{name}
+%{_tmpfilesdir}/%{name}.conf
 
 %files -n python3-py%{name}
 %license python/LICENSE
@@ -79,6 +85,9 @@ sed -ie "s|version=\"1.4.1\"|version=\"%{version}\"|" python/setup.py
 
 
 %changelog
+* Tue Dec  1 12:26:55 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-7
+- Recreate state directory with tmpfiles (bz #1903141)
+
 * Mon Nov 30 16:23:46 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-6
 - Rebuild for folly-2020.11.30.00
 
