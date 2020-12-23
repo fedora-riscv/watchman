@@ -7,8 +7,8 @@
 %bcond_with tests
 
 Name:           watchman
-Version:        2020.09.21.00
-Release:        7%{?dist}
+Version:        2020.12.21.00
+Release:        1%{?dist}
 Summary:        File alteration monitoring service
 
 License:        ASL 2.0
@@ -85,6 +85,9 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %changelog
+* Tue Dec 22 20:48:10 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.12.21.00-1
+- Update to 2020.12.21.00
+
 * Tue Dec  1 12:26:55 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-7
 - Recreate state directory with tmpfiles (bz #1903141)
 
