@@ -7,7 +7,7 @@
 %bcond_with tests
 
 Name:           watchman
-Version:        2020.12.28.00
+Version:        2021.01.25.00
 Release:        1%{?dist}
 Summary:        File alteration monitoring service
 
@@ -85,6 +85,9 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %changelog
+* Tue Jan 26 17:51:20 PST 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.01.25.00-1
+- Update to 2021.01.25.00
+
 * Tue Dec 29 12:16:46 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.12.28.00-1
 - Update to 2020.12.28.00
 
