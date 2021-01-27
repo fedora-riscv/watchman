@@ -1,6 +1,6 @@
-From bbd07d8de81e7366d3d6a08e740615be40bfe177 Mon Sep 17 00:00:00 2001
+From 433938a3a6f03b144151895e23c98906af1d4d7a Mon Sep 17 00:00:00 2001
 From: Michel Alexandre Salim <michel@michel-slm.name>
-Date: Tue, 10 Nov 2020 16:51:56 -0800
+Date: Tue, 26 Jan 2021 22:32:56 -0800
 Subject: [PATCH] watchman: use DESTDIR consistently
 
 Delay `DESTDIR` evaluation in invocation of `python setup.py` so it uses
@@ -19,7 +19,7 @@ Signed-off-by: Michel Alexandre Salim <michel@michel-slm.name>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3dbcd68a..8b9474fb 100644
+index 3dbcd68a..2c197bcd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -136,7 +136,7 @@ endfunction()
@@ -31,10 +31,10 @@ index 3dbcd68a..8b9474fb 100644
      "Run-time path of the persistent state directory")
    set(INSTALL_WATCHMAN_STATE_DIR OFF CACHE BOOL
      "Whether WATCHMAN_STATE_DIR should be created by the cmake install
-@@ -380,7 +380,7 @@ if(WIN32)
+@@ -418,7 +418,7 @@ else()
          ${CMAKE_COMMAND} -E env
            CMAKE_CURRENT_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
-           ${Python3_EXECUTABLE} ${SETUP_PY} install
+           ${PYTHON3} ${SETUP_PY} install
 -          --root $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}
 +          --root \$ENV{DESTDIR}
          RESULT_VARIABLE STATUS)
