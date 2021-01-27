@@ -11,6 +11,8 @@ Version:        2021.01.25.00
 Release:        1%{?dist}
 Summary:        File alteration monitoring service
 
+%global stripped_version %(echo %{version} | sed -r 's/\\.0([[:digit:]])/.\\1/g')
+
 License:        ASL 2.0
 URL:            https://facebook.github.io/%{name}/
 Source0:        https://github.com/facebook/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -49,7 +51,7 @@ The python3-py%{name} package contains Python bindings for %{name}.
 %prep
 %autosetup -p1
 # Fix pywatchman version.
-sed -ie "s|version=\"1.4.1\"|version=\"%{version}\"|" python/setup.py
+sed -i "s|version=\"1.4.1\"|version=\"%{version}\"|" python/setup.py
 
 
 %build
@@ -81,7 +83,7 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %license python/LICENSE
 %{_bindir}/%{name}-*
 %{python3_sitearch}/py%{name}
-%{python3_sitearch}/py%{name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/py%{name}-%{stripped_version}-py%{python3_version}.egg-info
 
 
 %changelog
