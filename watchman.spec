@@ -7,8 +7,8 @@
 %bcond_with tests
 
 Name:           watchman
-Version:        2021.03.29.00
-Release:        2%{?dist}
+Version:        2021.04.12.00
+Release:        1%{?dist}
 Summary:        File alteration monitoring service
 
 %global stripped_version %(echo %{version} | sed -r 's/\\.0([[:digit:]])/.\\1/g')
@@ -87,6 +87,9 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %changelog
+* Fri Apr 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.04.12.00-1
+- Update to 2021.04.12.00
+
 * Tue Mar 30 2021 Jonathan Wakely <jwakely@redhat.com> - 2021.03.29.00-2
 - Rebuilt for removed libstdc++ symbol (#1937698)
 
