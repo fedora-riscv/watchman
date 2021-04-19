@@ -40,6 +40,7 @@ Summary:        Python bindings for %{name}
 License:        BSD and MIT
 BuildRequires:  procps-ng
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 # watchman-diag shells out to ps
 Requires:       procps-ng
