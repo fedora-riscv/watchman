@@ -8,7 +8,7 @@
 
 Name:           watchman
 Version:        2021.05.10.00
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        File alteration monitoring service
 
 %global stripped_version %(echo %{version} | sed -r 's/\\.0([[:digit:]])/.\\1/g')
@@ -88,6 +88,9 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %changelog
+* Mon Jul 05 2021 Richard Shaw <hobbes1069@gmail.com> - 2021.05.10.00-3
+- Rebuild for new fmt version.
+
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 2021.05.10.00-2
 - Rebuilt for Python 3.10
 
