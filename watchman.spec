@@ -8,7 +8,7 @@
 
 Name:           watchman
 Version:        2021.05.10.00
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        File alteration monitoring service
 
 %global stripped_version %(echo %{version} | sed -r 's/\\.0([[:digit:]])/.\\1/g')
@@ -88,6 +88,9 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %changelog
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2021.05.10.00-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Mon Jul 05 2021 Richard Shaw <hobbes1069@gmail.com> - 2021.05.10.00-3
 - Rebuild for new fmt version.
 
