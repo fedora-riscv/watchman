@@ -1,0 +1,36 @@
+--- watchman-2021.05.10.00/PendingCollection.cpp.folly	2021-05-09 08:48:24.000000000 +0900
++++ watchman-2021.05.10.00/PendingCollection.cpp	2021-09-09 15:58:07.886372886 +0900
+@@ -301,9 +301,9 @@ PendingCollection::LockedPtr PendingColl
+   }
+ 
+   if (timeoutms.count() == -1) {
+-    cond_.wait(lock.getUniqueLock());
++    cond_.wait(lock.as_lock());
+   } else {
+-    cond_.wait_for(lock.getUniqueLock(), timeoutms);
++    cond_.wait_for(lock.as_lock(), timeoutms);
+   }
+ 
+   pinged = lock->checkAndResetPinged();
+--- watchman-2021.05.10.00/perf.cpp.folly	2021-05-09 08:48:24.000000000 +0900
++++ watchman-2021.05.10.00/perf.cpp	2021-09-09 15:59:22.202231238 +0900
+@@ -221,7 +221,7 @@ void PerfLogThread::loop() noexcept {
+           // No samples remaining, and we have been asked to quit.
+           return;
+         }
+-        cond_.wait(state.getUniqueLock());
++        cond_.wait(state.as_lock());
+       }
+ 
+       samples = nullptr;
+--- watchman-2021.05.10.00/state.cpp.folly	2021-05-09 08:48:24.000000000 +0900
++++ watchman-2021.05.10.00/state.cpp	2021-09-09 15:59:59.626159910 +0900
+@@ -42,7 +42,7 @@ static void state_saver() noexcept {
+     {
+       auto state = saveState.lock();
+       if (!state->needsSave) {
+-        stateCond.wait(state.getUniqueLock());
++        stateCond.wait(state.as_lock());
+       }
+       do_save = state->needsSave;
+       state->needsSave = false;

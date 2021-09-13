@@ -1,0 +1,14 @@
+--- watchman-2021.05.10.00/InMemoryView.h.wordsize	2021-05-09 08:48:24.000000000 +0900
++++ watchman-2021.05.10.00/InMemoryView.h	2021-09-09 19:55:39.910101746 +0900
+@@ -362,7 +362,11 @@ class InMemoryView : public QueryableVie
+     time_t mtime;
+   };
+ 
++#if __WORDSIZE == 32
++  static_assert(80 == sizeof(PendingChangeLogEntry));
++#else
+   static_assert(88 == sizeof(PendingChangeLogEntry));
++#endif
+ 
+   // If set, paths processed by processPending are logged here.
+   std::unique_ptr<folly::LockFreeRingBuffer<PendingChangeLogEntry>>

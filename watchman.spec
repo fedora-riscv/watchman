@@ -8,7 +8,7 @@
 
 Name:           watchman
 Version:        2021.05.10.00
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        File alteration monitoring service
 
 %global stripped_version %(echo %{version} | sed -r 's/\\.0([[:digit:]])/.\\1/g')
@@ -18,6 +18,10 @@ URL:            https://facebook.github.io/%{name}/
 Source0:        https://github.com/facebook/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        tmpfiles-%{name}.conf
 Patch0:         %{name}-destdir.patch
+# https://github.com/facebook/folly/commit/b65ef9f8b5f9b495370b1e651732214cde8abc7d
+Patch1:         watchman-2021.05.10.00-folly-new.patch
+# Fix build failure on 32bit arch
+Patch2:         watchman-2021.05.10.00-wordsize.patch
 
 # Folly is known not to work on big-endian CPUs
 # TODO: file bz once this is approved
@@ -54,6 +58,11 @@ The python3-py%{name} package contains Python bindings for %{name}.
 # Fix pywatchman version.
 sed -i "s|version=\"1.4.1\"|version=\"%{version}\"|" python/setup.py
 
+# testsuite does not seem to compile with gtest 1.11....
+# disabling for now on rawhide
+%if 0%{?fedora} >= 36
+sed -i CMakeLists.txt -e 's|^t_test|#t_test|'
+%endif
 
 %build
 %cmake \
@@ -88,6 +97,11 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %changelog
+* Mon Sep 13 2021 Mamoru TASAKA <mtasaka@fedoraproject.org> - 2021.05.10.00-5
+- Patch for folly API deprecation change
+- Patch for build issue on 32bit arch
+- Disable tests with gtest 1.11 for now
+
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2021.05.10.00-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
