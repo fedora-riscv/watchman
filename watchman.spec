@@ -8,7 +8,7 @@
 
 Name:           watchman
 Version:        2021.05.10.00
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        File alteration monitoring service
 
 %global stripped_version %(echo %{version} | sed -r 's/\\.0([[:digit:]])/.\\1/g')
@@ -97,6 +97,9 @@ cp -p %{SOURCE1} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 
 %changelog
+* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 2021.05.10.00-6
+- Rebuilt with OpenSSL 3.0.0
+
 * Mon Sep 13 2021 Mamoru TASAKA <mtasaka@fedoraproject.org> - 2021.05.10.00-5
 - Patch for folly API deprecation change
 - Patch for build issue on 32bit arch
