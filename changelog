@@ -1,0 +1,78 @@
+* Tue Dec 28 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.05.10.00-7
+- Rebuilt with Folly 2021.12.20.00
+- Opt in to rpmautospec
+
+* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 2021.05.10.00-6
+- Rebuilt with OpenSSL 3.0.0
+
+* Mon Sep 13 2021 Mamoru TASAKA <mtasaka@fedoraproject.org> - 2021.05.10.00-5
+- Patch for folly API deprecation change
+- Patch for build issue on 32bit arch
+- Disable tests with gtest 1.11 for now
+
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2021.05.10.00-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Mon Jul 05 2021 Richard Shaw <hobbes1069@gmail.com> - 2021.05.10.00-3
+- Rebuild for new fmt version.
+
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 2021.05.10.00-2
+- Rebuilt for Python 3.10
+
+* Mon May 10 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.05.10.00-1
+- Update to 2021.05.10.00
+
+* Mon Apr 26 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.04.26.00-1
+- Update to 2021.04.26.00
+
+* Fri Apr 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.04.12.00-1
+- Update to 2021.04.12.00
+
+* Tue Mar 30 2021 Jonathan Wakely <jwakely@redhat.com> - 2021.03.29.00-2
+- Rebuilt for removed libstdc++ symbol (#1937698)
+
+* Mon Mar 29 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.03.29.00-1
+- Update to 2021.03.29.00
+
+* Wed Mar 24 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.03.22.00-1
+- Update to 2021.03.22.00
+
+* Mon Mar 15 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.03.15.00-1
+- Update to 2021.03.15.00
+
+* Wed Feb 03 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.02.01.00-1
+- Update to 2021.02.01.00
+
+* Tue Jan 26 17:51:20 PST 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.01.25.00-1
+- Update to 2021.01.25.00
+
+* Tue Dec 29 12:16:46 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.12.28.00-1
+- Update to 2020.12.28.00
+
+* Tue Dec 22 20:48:10 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.12.21.00-1
+- Update to 2020.12.21.00
+
+* Tue Dec  1 12:26:55 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-7
+- Recreate state directory with tmpfiles (bz #1903141)
+
+* Mon Nov 30 16:23:46 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-6
+- Rebuild for folly-2020.11.30.00
+
+* Mon Nov 23 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-5
+- Rebuild for folly-2020.11.23.00
+
+* Mon Nov 16 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-4
+- Rebuild for folly-2020.11.16.00
+
+* Thu Nov 12 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-3
+- Also install Watchman's state directory
+
+* Wed Nov 11 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-2
+- Support enabling tests
+- Add ExcludeArch on s390x for Folly dependency
+- Rename Python subpackage
+- Fix version number and licensing for Python subpackage
+- Move Python scripts to the Python subpackage
+
+* Tue Nov 10 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.09.21.00-1
+- Initial package
