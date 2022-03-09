@@ -27,6 +27,8 @@ Patch2:         watchman-2021.05.10.00-wordsize.patch
 # TODO: file bz once this is approved
 ExcludeArch:    s390x
 %if 0%{?fedora} >= 36
+# can't build against clang folly: https://bugzilla.redhat.com/show_bug.cgi?id=2062395
+ExcludeArch:    %{ix86}
 # fmt code breaks: https://bugzilla.redhat.com/show_bug.cgi?id=2061022
 ExcludeArch:    ppc64le
 %endif
