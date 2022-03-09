@@ -26,6 +26,10 @@ Patch2:         watchman-2021.05.10.00-wordsize.patch
 # Folly is known not to work on big-endian CPUs
 # TODO: file bz once this is approved
 ExcludeArch:    s390x
+%if 0%{?fedora} >= 36
+# fmt code breaks: https://bugzilla.redhat.com/show_bug.cgi?id=2061022
+ExcludeArch:    ppc64le
+%endif
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
