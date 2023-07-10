@@ -1,0 +1,22 @@
+--- a/json.cpp
++++ b/json.cpp
+@@ -443,7 +443,7 @@ bool watchman_json_buffer::streamPdu(w_s
+       return streamN(stm, len, jerr);
+     }
+     default:
+-      logf(FATAL, "not streaming for pdu type {}\n", pdu_type);
++      logf(FATAL, "not streaming for pdu type {}\n", static_cast<int>(pdu_type));
+       return false;
+   }
+ }
+--- a/bser.cpp
++++ b/bser.cpp
+@@ -388,7 +388,7 @@ int w_bser_dump(const bser_ctx_t* ctx, c
+         case W_STRING_MIXED:
+           return bser_mixedstring(ctx, wstr, data);
+         default:
+-          w_assert(false, "unknown string type 0x%02x", wstr.type());
++          w_assert(false, "unknown string type 0x%02x", static_cast<int>(wstr.type()));
+           return -1;
+       }
+     }

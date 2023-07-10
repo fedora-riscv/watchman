@@ -1,0 +1,23 @@
+--- a/build/fbcode_builder/CMake/fb_py_test_main.py
++++ b/build/fbcode_builder/CMake/fb_py_test_main.py
+@@ -24,11 +24,6 @@ import traceback
+ import unittest
+ import warnings
+ 
+-# Hide warning about importing "imp"; remove once python2 is gone.
+-with warnings.catch_warnings():
+-    warnings.filterwarnings("ignore", category=DeprecationWarning)
+-    import imp
+-
+ try:
+     from StringIO import StringIO
+ except ImportError:
+@@ -195,7 +190,7 @@ class CallbackStream(object):
+         return self._fileno
+ 
+ 
+-class BuckTestResult(unittest._TextTestResult):
++class BuckTestResult(unittest.TextTestResult):
+     """
+     Our own TestResult class that outputs data in a format that can be easily
+     parsed by buck's test runner.
