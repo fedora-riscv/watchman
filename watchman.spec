@@ -8,7 +8,7 @@
 
 Name:           watchman
 Version:        2021.05.10.00
-Release:        %autorelease
+Release:        %autorelease -e rv64
 Summary:        File alteration monitoring service
 
 %global stripped_version %(echo %{version} | sed -r 's/\\.0([[:digit:]])/.\\1/g')
@@ -27,7 +27,7 @@ Patch3:         watchman-fix-for-py3_12.diff
 # Fix build failure with fmt 10
 Patch4:         watchman-fix-for-fmt10.diff
 
-ExclusiveArch:  x86_64 aarch64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
