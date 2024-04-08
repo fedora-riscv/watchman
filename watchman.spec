@@ -27,7 +27,7 @@ Patch3:         watchman-fix-for-py3_12.diff
 # Fix build failure with fmt 10
 Patch4:         watchman-fix-for-fmt10.diff
 
-ExclusiveArch:  x86_64 aarch64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
